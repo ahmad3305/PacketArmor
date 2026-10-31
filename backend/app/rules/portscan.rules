@@ -1,0 +1,13 @@
+# ==============================================================================
+# PacketArmor Port Scan & Reconnaissance Signatures
+# ==============================================================================
+
+# TCP Abnormal Scan Flags
+alert tcp any any -> any any (msg:"SCAN - TCP Xmas Scan (FIN-PSH-URG)"; flags:FPU; sid:1000701; rev:1; classtype:attempted-recon; priority:2;)
+alert tcp any any -> any any (msg:"SCAN - TCP NULL Scan (No Flags)"; flags:0; sid:1000702; rev:1; classtype:attempted-recon; priority:2;)
+alert tcp any any -> any any (msg:"SCAN - TCP FIN Scan"; flags:F; sid:1000703; rev:1; classtype:attempted-recon; priority:3;)
+
+# Sensitive Port Probing
+alert tcp any any -> any 445 (msg:"SCAN - SMB Port 445 Probe / Lateral Movement Attempt"; sid:1000704; rev:1; classtype:attempted-recon; priority:3;)
+alert tcp any any -> any 3389 (msg:"SCAN - RDP Port 3389 External Probe"; sid:1000705; rev:1; classtype:attempted-recon; priority:3;)
+alert tcp any any -> any 23 (msg:"SCAN - Telnet Port 23 Insecure Access Probe"; sid:1000706; rev:1; classtype:attempted-recon; priority:3;)

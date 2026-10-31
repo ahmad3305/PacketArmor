@@ -1,0 +1,32 @@
+# ==============================================================================
+# PacketArmor Community Rules - Web Application & Exploit Signatures
+# Snort/Suricata Compatible Format
+# ==============================================================================
+
+# SQL Injection Signatures
+alert tcp any any -> any 80 (msg:"SQL Injection - UNION SELECT detected"; content:"UNION SELECT"; nocase; sid:1000101; rev:1; classtype:web-application-attack; priority:1;)
+alert tcp any any -> any 8080 (msg:"SQL Injection - UNION SELECT detected"; content:"UNION SELECT"; nocase; sid:1000102; rev:1; classtype:web-application-attack; priority:1;)
+alert tcp any any -> any any (msg:"SQL Injection - Classic Tautology ' OR 1=1"; content:"' OR '1'='1"; nocase; sid:1000103; rev:1; classtype:web-application-attack; priority:1;)
+alert tcp any any -> any any (msg:"SQL Injection - Schema Enumeration"; content:"information_schema"; nocase; sid:1000104; rev:1; classtype:web-application-attack; priority:2;)
+alert tcp any any -> any any (msg:"SQL Injection - Time Based Delay"; content:"WAITFOR DELAY"; nocase; sid:1000105; rev:1; classtype:web-application-attack; priority:1;)
+
+# Cross-Site Scripting (XSS) Signatures
+alert tcp any any -> any any (msg:"XSS - Script Tag Injected"; content:"<script>"; nocase; sid:1000201; rev:1; classtype:web-application-attack; priority:2;)
+alert tcp any any -> any any (msg:"XSS - Event Handler Injection"; content:"onerror="; nocase; sid:1000202; rev:1; classtype:web-application-attack; priority:2;)
+alert tcp any any -> any any (msg:"XSS - JavaScript URI Payload"; content:"javascript:alert"; nocase; sid:1000203; rev:1; classtype:web-application-attack; priority:2;)
+
+# Directory & Path Traversal (LFI)
+alert tcp any any -> any any (msg:"Path Traversal - Unix passwd access"; content:"../etc/passwd"; sid:1000301; rev:1; classtype:attempted-recon; priority:1;)
+alert tcp any any -> any any (msg:"Path Traversal - Windows win.ini access"; content:"..\windows\win.ini"; nocase; sid:1000302; rev:1; classtype:attempted-recon; priority:1;)
+alert tcp any any -> any any (msg:"Path Traversal - Directory Climbing Sequence"; content:"../../../../"; sid:1000303; rev:1; classtype:attempted-recon; priority:2;)
+
+# Remote Command Execution & Reverse Shells
+alert tcp any any -> any any (msg:"Command Injection - Bourne Shell Execution"; content:"/bin/sh"; sid:1000401; rev:1; classtype:attempted-admin; priority:1;)
+alert tcp any any -> any any (msg:"Command Injection - Windows Command Interpreter"; content:"cmd.exe /c"; nocase; sid:1000402; rev:1; classtype:attempted-admin; priority:1;)
+alert tcp any any -> any any (msg:"Command Injection - Linux whoami execution"; content:"; whoami"; sid:1000403; rev:1; classtype:attempted-admin; priority:2;)
+
+# Malicious Scanner User-Agents
+alert tcp any any -> any any (msg:"Vulnerability Scanner - SQLMap detected"; content:"sqlmap"; nocase; sid:1000501; rev:1; classtype:attempted-recon; priority:3;)
+alert tcp any any -> any any (msg:"Vulnerability Scanner - Nikto detected"; content:"Nikto"; nocase; sid:1000502; rev:1; classtype:attempted-recon; priority:3;)
+alert tcp any any -> any any (msg:"Vulnerability Scanner - Nmap Scripting Engine"; content:"Nmap NSE"; nocase; sid:1000503; rev:1; classtype:attempted-recon; priority:3;)
+

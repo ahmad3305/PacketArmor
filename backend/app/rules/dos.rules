@@ -1,0 +1,14 @@
+# ==============================================================================
+# PacketArmor DoS & Volumetric Attack Signatures
+# ==============================================================================
+
+# ICMP Anomalies
+alert icmp any any -> any any (msg:"DoS - Ping of Death / Large ICMP Payload"; dsize:>1000; sid:1000601; rev:1; classtype:denial-of-service; priority:2;)
+alert icmp any any -> any any (msg:"DoS - Oversized Jumbo Echo Request"; dsize:>1450; sid:1000602; rev:1; classtype:denial-of-service; priority:1;)
+
+# TCP SYN Flood Flags
+alert tcp any any -> any any (msg:"DoS - TCP SYN Packet with Suspicious Window Size"; flags:S; content:"FLOOD"; sid:1000603; rev:1; classtype:denial-of-service; priority:2;)
+
+# Slowloris HTTP Keep-Alive Drain
+alert tcp any any -> any 80 (msg:"DoS - Slowloris HTTP Header Probe"; content:"X-a: b"; nocase; sid:1000604; rev:1; classtype:denial-of-service; priority:2;)
+

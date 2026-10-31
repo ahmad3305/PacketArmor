@@ -1,0 +1,92 @@
+{
+  "192.168.1.105": {
+    "ip": "192.168.1.105",
+    "reason": "Automated Mitigation: DoS - Ping of Death / Large ICMP Payload",
+    "severity": "HIGH",
+    "blocked_at": 1793454017.6698287,
+    "duration_sec": 300,
+    "expires_at": 1793454317.6698287,
+    "active": true,
+    "system_firewall": true
+  },
+  "198.51.100.99": {
+    "ip": "198.51.100.99",
+    "reason": "Automated Test Ban",
+    "severity": "HIGH",
+    "blocked_at": 1793454056.753229,
+    "duration_sec": 60,
+    "expires_at": 1793454116.753229,
+    "active": false,
+    "system_firewall": true,
+    "firewall_details": {
+      "ip": "198.51.100.99",
+      "system_applied": true,
+      "message": "Windows Firewall rule 'PacketArmor_Block_198.51.100.99' created successfully. Traffic blocked."
+    }
+  },
+  "185.190.140.22": {
+    "ip": "185.190.140.22",
+    "reason": "Automated Mitigation: SQL Injection - UNION SELECT detected",
+    "severity": "CRITICAL",
+    "blocked_at": 1793454057.3268056,
+    "duration_sec": 300,
+    "expires_at": 1793454357.3268056,
+    "active": true,
+    "system_firewall": true,
+    "firewall_details": {
+      "ip": "185.190.140.22",
+      "system_applied": true,
+      "message": "Windows Firewall rule 'PacketArmor_Block_185.190.140.22' created successfully. Traffic blocked."
+    }
+  },
+  "45.33.32.156": {
+    "ip": "45.33.32.156",
+    "reason": "Automated Mitigation: ANOMALY - Network Port Scan Detected (8 ports targeted in 4.0s)",
+    "severity": "HIGH",
+    "blocked_at": 1793454057.779973,
+    "duration_sec": 300,
+    "expires_at": 1793454357.779973,
+    "active": true,
+    "system_firewall": true
+  },
+  "1.1.1.1": {
+    "ip": "1.1.1.1",
+    "reason": "Automated Mitigation: SQL Injection - UNION SELECT detected",
+    "severity": "CRITICAL",
+    "blocked_at": 1793450442.5188274,
+    "duration_sec": 300,
+    "expires_at": 1793450742.5188274,
+    "active": false,
+    "system_firewall": false
+  },
+  "103.208.220.4": {
+    "ip": "103.208.220.4",
+    "reason": "Automated Mitigation: XSS - Script Tag Injected",
+    "severity": "HIGH",
+    "blocked_at": 1793453196.4381316,
+    "duration_sec": 300,
+    "expires_at": 1793453496.4381316,
+    "active": false,
+    "system_firewall": true,
+    "firewall_details": {
+      "ip": "103.208.220.4",
+      "system_applied": true,
+      "message": "Windows Firewall rule 'PacketArmor_Block_103.208.220.4' created successfully. Traffic blocked."
+    }
+  },
+  "91.240.118.89": {
+    "ip": "91.240.118.89",
+    "reason": "Path Traversal - Unix passwd access",
+    "severity": "HIGH",
+    "blocked_at": 1793453605.0148447,
+    "duration_sec": 300,
+    "expires_at": 1793453905.0148447,
+    "active": false,
+    "system_firewall": true,
+    "firewall_details": {
+      "ip": "91.240.118.89",
+      "system_applied": true,
+      "message": "Windows Firewall rule 'PacketArmor_Block_91.240.118.89' created successfully. Traffic blocked."
+    }
+  }
+}

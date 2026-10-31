@@ -1,0 +1,7 @@
+# ==============================================================================
+# PacketArmor User Custom Rules
+# You can append new Snort rules through the Dashboard or edit this file directly.
+# ==============================================================================
+alert tcp any any -> any 21 (msg:"POLICY - FTP Unencrypted Authentication Attempt"; content:"USER root"; nocase; sid:2000001; rev:1; classtype:attempted-admin; priority:2;)
+alert tcp any any -> any any (msg:"POLICY - Cryptocurrency Miner Stratum Protocol"; content:"mining.subscribe"; nocase; sid:2000002; rev:1; classtype:policy-violation; priority:1;)
+
